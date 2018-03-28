@@ -1644,12 +1644,20 @@ namespace ProceduralParts
 
                 try
                 {
-                    containsMFT = part.Modules.Contains("ModuleFuelTanks");
+                    for (int i = 0; i<part.Modules.Count; i++)
+                    {
+                        if (part.Modules[i].name == "ModuleFuelTanks")
+                        {
+                            containsMFT = true;
+                            break;
+                        }
+                    }
                 }
                 catch
                 {
-                    Debug.Log("Caught error in PartModuleList.Contains()");
+                    Debug.Log("Caught error searching for ModuleFuelTanks");
                 }
+
 
                 if (!containsMFT && (object)PartResourceLibrary.Instance != null)
                 {
